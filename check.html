@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Divisibility Checker</title>
+    </head>
+    <body>
+    
+    <h2>Number Divisibility Checker</h2>
+    
+    <label for="numberInput">Enter a number:</label>
+    <input type="text" id="numberInput" placeholder="Type a number">
+    
+    <button onclick="checkDivisibility()">Check Divisibility</button>
+    
+    <p id="result"></p>
+    
+    <script>
+        function checkDivisibility() {
+            
+            var userInput = document.getElementById("numberInput").value;
+    
+            if (isNaN(userInput)) {
+                document.getElementById("result").innerText = "Please enter a valid number.";
+                return;
+            }
+    
+            var number = parseFloat(userInput);
+    
+            var isDivisibleBy3 = number % 3 === 0;
+            var isDivisibleBy7 = number % 7 === 0;
+    
+            if (isDivisibleBy3 && isDivisibleBy7) {
+                document.getElementById("result").innerText = number + " is divisible by both 3 and 7.";
+            } else if (isDivisibleBy3) {
+                document.getElementById("result").innerText = number + " is divisible by 3.";
+            } else if (isDivisibleBy7) {
+                document.getElementById("result").innerText = number + " is divisible by 7.";
+            } else {
+                document.getElementById("result").innerText = number + " is not divisible by 3 or 7.";
+            }
+        }
+    </script>
+    
+    </body>
+    </html>
+    
+
+

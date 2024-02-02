@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Date Formatter</title>
+</head>
+<body>
+
+<h2>Current Date Formatter</h2>
+
+<p id="mm-dd-yyyy"></p>
+<p id="mm/dd/yyyy"></p>
+<p id="dd-mm-yyyy"></p>
+<p id="dd/mm/yyyy"></p>
+
+<script>
+    function formatDate(date) {
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        return new Intl.DateTimeFormat('en-US', options).format(date);
+    }
+
+    const currentDate = new Date();
+
+    const mm_dd_yyyy = formatDate(currentDate).replace(/\//g, '-');
+    const mm_dd_slash_yyyy = formatDate(currentDate);
+    const dd_mm_yyyy = formatDate(currentDate).split('/').reverse().join('-');
+    const dd_slash_mm_yyyy = formatDate(currentDate).split('/').reverse().join('/');
+
+    document.getElementById("mm-dd-yyyy").innerText = `mm-dd-yyyy: ${mm_dd_yyyy}`;
+    document.getElementById("mm/dd/yyyy").innerText = `mm/dd/yyyy: ${mm_dd_slash_yyyy}`;
+    document.getElementById("dd-mm-yyyy").innerText = `dd-mm-yyyy: ${dd_mm_yyyy}`;
+    document.getElementById("dd/mm/yyyy").innerText = `dd/mm/yyyy: ${dd_slash_mm_yyyy}`;
+</script>
+
+</body>
+</html>
